@@ -37,16 +37,19 @@ export default async function BlogPage() {
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {whitepapers.map((wp: Whitepaper) => (
-                <div
+                <a
                   key={wp._id}
-                  className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+                  href={`https://dentadvisor.org/whitepapers/${wp.slug.current}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow block group"
                 >
-                  <div className="w-12 h-12 bg-[#1B4F72] rounded-xl flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-[#1B4F72] rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                     </svg>
                   </div>
-                  <h3 className="text-lg font-semibold text-[#1B4F72] mb-2">
+                  <h3 className="text-lg font-semibold text-[#1B4F72] mb-2 group-hover:text-[#2A6496] transition-colors">
                     {wp.title}
                   </h3>
                   {wp.description && (
@@ -54,10 +57,10 @@ export default async function BlogPage() {
                       {wp.description}
                     </p>
                   )}
-                  <span className="inline-block mt-4 text-[#2A6496] font-medium text-sm">
+                  <span className="inline-block mt-4 text-[#2A6496] font-medium text-sm group-hover:underline">
                     Read Guide →
                   </span>
-                </div>
+                </a>
               ))}
             </div>
           </div>
@@ -78,9 +81,12 @@ export default async function BlogPage() {
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {blogs.map((blog: Blog) => (
-                <article
+                <a
                   key={blog._id}
-                  className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow"
+                  href={`https://dentadvisor.org/blog/${blog.slug.current}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow block"
                 >
                   {blog.mainImage && (
                     <div className="aspect-video bg-gray-100 overflow-hidden">
@@ -118,7 +124,7 @@ export default async function BlogPage() {
                       Read More →
                     </span>
                   </div>
-                </article>
+                </a>
               ))}
             </div>
           )}
