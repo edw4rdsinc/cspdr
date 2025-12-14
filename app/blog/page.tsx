@@ -37,11 +37,9 @@ export default async function BlogPage() {
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {whitepapers.map((wp: Whitepaper) => (
-                <a
+                <Link
                   key={wp._id}
-                  href={`https://dentadvisor.org/guides/${wp.slug.current}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={`/guides/${wp.slug.current}`}
                   className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow block group"
                 >
                   <div className="w-12 h-12 bg-[#1B4F72] rounded-xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
@@ -60,7 +58,7 @@ export default async function BlogPage() {
                   <span className="inline-block mt-4 text-[#2A6496] font-medium text-sm group-hover:underline">
                     Read Guide →
                   </span>
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -81,11 +79,9 @@ export default async function BlogPage() {
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {blogs.map((blog: Blog) => (
-                <a
+                <Link
                   key={blog._id}
-                  href={`https://dentadvisor.org/blog/${blog.slug.current}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={`/blog/${blog.slug.current}`}
                   className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow block"
                 >
                   {blog.mainImage && (
@@ -124,7 +120,7 @@ export default async function BlogPage() {
                       Read More →
                     </span>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           )}

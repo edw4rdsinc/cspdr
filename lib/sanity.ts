@@ -1,5 +1,5 @@
 import { createClient } from '@sanity/client'
-import imageUrlBuilder from '@sanity/image-url'
+import { createImageUrlBuilder } from '@sanity/image-url'
 
 export const client = createClient({
   projectId: 'n1pctdd7',
@@ -8,7 +8,7 @@ export const client = createClient({
   useCdn: true,
 })
 
-const builder = imageUrlBuilder(client)
+const builder = createImageUrlBuilder(client)
 
 export function urlFor(source: any) {
   return builder.image(source)
@@ -71,5 +71,19 @@ export async function getWhitepapers(limit = 10): Promise<Whitepaper[]> {
       mainImage
     }`,
     { limit: limit - 1 }
+  )
+}
+
+export async function getWhitepaper(slug: string): Promise<Whitepaper & { content?: any[] } | null> {
+  return client.fetch(
+    `*[_type == "whitepaper" && slug.current == $slug][0]{
+      _id,
+      title,
+      slug,
+      description,
+      mainImage,
+      content
+    }`,
+    { slug }
   )
 }
