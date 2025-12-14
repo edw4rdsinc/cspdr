@@ -67,7 +67,7 @@ export default function Rocklear() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-32 pb-24 bg-gradient-to-br from-[#1a2e35] via-[#2d4a54] to-[#1a2e35] relative overflow-hidden">
+      <section className="pt-32 pb-24 bg-gradient-to-br from-[#1B4F72] via-[#2A6496] to-[#1B4F72] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-white rounded-full blur-3xl"></div>
         </div>
@@ -82,7 +82,7 @@ export default function Rocklear() {
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
                 <a
                   href="#quote"
-                  className="btn-primary bg-white text-[#1a2e35] px-8 py-4 rounded-full font-semibold text-lg inline-flex items-center justify-center gap-2"
+                  className="btn-primary bg-white text-[#1B4F72] px-8 py-4 rounded-full font-semibold text-lg inline-flex items-center justify-center gap-2"
                 >
                   Get a Quote
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -115,7 +115,7 @@ export default function Rocklear() {
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation className="text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#1a2e35]">Why Rocklear?</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#1B4F72]">Why Rocklear?</h2>
             <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
               Premium protection without the premium maintenance headaches.
             </p>
@@ -125,10 +125,10 @@ export default function Rocklear() {
             {benefits.map((benefit, i) => (
               <ScrollAnimation key={i} delay={i * 75}>
                 <div className="card-hover bg-[#f8f8f6] rounded-2xl p-8">
-                  <div className="w-14 h-14 bg-[#1a2e35] text-white rounded-2xl flex items-center justify-center">
+                  <div className="w-14 h-14 bg-[#1B4F72] text-white rounded-2xl flex items-center justify-center">
                     {benefit.icon}
                   </div>
-                  <h3 className="mt-6 text-xl font-semibold text-[#1a2e35]">{benefit.title}</h3>
+                  <h3 className="mt-6 text-xl font-semibold text-[#1B4F72]">{benefit.title}</h3>
                   <p className="mt-3 text-gray-600">{benefit.description}</p>
                 </div>
               </ScrollAnimation>
@@ -138,7 +138,7 @@ export default function Rocklear() {
       </section>
 
       {/* No Maintenance Callout */}
-      <section className="py-24 bg-[#1a2e35] text-white">
+      <section className="py-24 bg-[#1B4F72] text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollAnimation>
             <h2 className="text-3xl sm:text-4xl font-bold">No Mandatory Maintenance</h2>
@@ -153,7 +153,7 @@ export default function Rocklear() {
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation className="text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#1a2e35]">Ideal For</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#1B4F72]">Ideal For</h2>
           </ScrollAnimation>
 
           <div className="mt-12 grid sm:grid-cols-3 gap-6">
@@ -164,7 +164,7 @@ export default function Rocklear() {
             ].map((item, i) => (
               <ScrollAnimation key={i} delay={i * 100}>
                 <div className="card-hover text-center p-8 bg-[#f8f8f6] rounded-2xl">
-                  <h3 className="text-xl font-semibold text-[#1a2e35]">{item.title}</h3>
+                  <h3 className="text-xl font-semibold text-[#1B4F72]">{item.title}</h3>
                   <p className="mt-3 text-gray-600">{item.desc}</p>
                 </div>
               </ScrollAnimation>
@@ -174,7 +174,7 @@ export default function Rocklear() {
       </section>
 
       {/* Quote Form */}
-      <section id="quote" className="py-24 bg-gradient-to-br from-[#1a2e35] via-[#2d4a54] to-[#1a2e35]">
+      <section id="quote" className="py-24 bg-gradient-to-br from-[#1B4F72] via-[#2A6496] to-[#1B4F72]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollAnimation>
             <h2 className="text-3xl sm:text-4xl font-bold text-white">Get Your Rocklear Quote</h2>
@@ -197,7 +197,7 @@ export default function Rocklear() {
                     href="https://forms.gle/X4oLoY5njaAeM29a9"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block mt-4 text-[#1a2e35] font-medium hover:underline"
+                    className="inline-block mt-4 text-[#1B4F72] font-medium hover:underline"
                   >
                     Or click here to open form directly →
                   </a>

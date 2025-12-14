@@ -115,7 +115,7 @@ export default function Resources() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-gradient-to-br from-[#1a2e35] via-[#2d4a54] to-[#1a2e35]">
+      <section className="pt-32 pb-16 bg-gradient-to-br from-[#1B4F72] via-[#2A6496] to-[#1B4F72]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl sm:text-5xl font-bold text-white">PDR Resources</h1>
           <p className="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
@@ -128,7 +128,7 @@ export default function Resources() {
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#1a2e35]">Interactive Guides</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#1B4F72]">Interactive Guides</h2>
             <p className="mt-4 text-lg text-gray-600">
               Quick 2-3 minute quizzes to help you make informed decisions
             </p>
@@ -141,14 +141,14 @@ export default function Resources() {
                   href={quiz.href}
                   className="card-hover block bg-[#f8f8f6] rounded-2xl p-6 h-full group"
                 >
-                  <div className="w-14 h-14 bg-[#1a2e35] text-white rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <div className="w-14 h-14 bg-[#1B4F72] text-white rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                     {quiz.icon}
                   </div>
-                  <h3 className="mt-5 text-xl font-semibold text-[#1a2e35] group-hover:text-[#2d4a54] transition-colors">
+                  <h3 className="mt-5 text-xl font-semibold text-[#1B4F72] group-hover:text-[#2A6496] transition-colors">
                     {quiz.title}
                   </h3>
                   <p className="mt-2 text-gray-600 text-sm">{quiz.description}</p>
-                  <div className="mt-4 text-[#1a2e35] font-medium text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                  <div className="mt-4 text-[#1B4F72] font-medium text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                     Take Quiz
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -162,7 +162,7 @@ export default function Resources() {
       </section>
 
       {/* Quick Facts */}
-      <section className="py-24 bg-[#1a2e35] text-white">
+      <section className="py-24 bg-[#1B4F72] text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation className="text-center">
             <h2 className="text-3xl sm:text-4xl font-bold">PDR Quick Facts</h2>
@@ -190,7 +190,7 @@ export default function Resources() {
       <section className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#1a2e35]">Common Questions</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#1B4F72]">Common Questions</h2>
           </ScrollAnimation>
 
           <div className="space-y-4">
@@ -215,7 +215,7 @@ export default function Resources() {
               <ScrollAnimation key={i} delay={i * 75}>
                 <details className="group bg-[#f8f8f6] rounded-2xl">
                   <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                    <span className="font-semibold text-[#1a2e35]">{faq.q}</span>
+                    <span className="font-semibold text-[#1B4F72]">{faq.q}</span>
                     <svg
                       className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform"
                       fill="none"
@@ -239,20 +239,20 @@ export default function Resources() {
       <section className="py-24 bg-[#f8f8f6]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollAnimation>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#1a2e35]">Still Have Questions?</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#1B4F72]">Still Have Questions?</h2>
             <p className="mt-4 text-lg text-gray-600">
               Send us a photo of your dent and we&apos;ll give you an honest assessment—no obligation.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/#book"
-                className="btn-primary bg-[#1a2e35] text-white px-8 py-4 rounded-full font-semibold text-lg inline-flex items-center justify-center gap-2"
+                className="btn-primary bg-[#1B4F72] text-white px-8 py-4 rounded-full font-semibold text-lg inline-flex items-center justify-center gap-2"
               >
                 Get a Free Quote
               </a>
               <a
                 href="tel:2086482554"
-                className="border-2 border-[#1a2e35] text-[#1a2e35] px-8 py-4 rounded-full font-semibold text-lg inline-flex items-center justify-center gap-2 hover:bg-[#1a2e35] hover:text-white transition-colors"
+                className="border-2 border-[#1B4F72] text-[#1B4F72] px-8 py-4 rounded-full font-semibold text-lg inline-flex items-center justify-center gap-2 hover:bg-[#1B4F72] hover:text-white transition-colors"
               >
                 Call (208) 648-2554
               </a>

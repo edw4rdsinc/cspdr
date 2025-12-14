@@ -10,9 +10,10 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          dark: "#1a2e35",      // Dark teal/charcoal
-          accent: "#2d4a54",    // Teal accent
-          light: "#f5f5f0",     // Cream/off-white
+          dark: "#1B4F72",      // Navy from logo "S"
+          accent: "#2A6496",    // Mid-blue bridge
+          sky: "#4FC3E8",       // Sky blue from logo "C"
+          light: "#f8f8f6",     // Cream/off-white
           text: "#1a1a1a",      // Dark text
         },
       },

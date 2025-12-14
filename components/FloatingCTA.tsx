@@ -17,7 +17,7 @@ export default function FloatingCTA() {
   return (
     <a
       href="#book"
-      className={`fab fixed bottom-6 right-6 z-40 bg-[#1a2e35] text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 font-medium ${
+      className={`fab fixed bottom-6 right-6 z-40 bg-[#1B4F72] text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 font-medium ${
         visible ? "visible" : ""
       }`}
     >

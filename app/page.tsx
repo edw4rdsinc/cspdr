@@ -11,7 +11,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1a2e35] via-[#2d4a54] to-[#1a2e35]">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1B4F72] via-[#2A6496] to-[#1B4F72]">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white rounded-full blur-3xl"></div>
             <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-white rounded-full blur-3xl"></div>
@@ -33,7 +33,7 @@ export default function Home() {
               <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <a
                   href="#book"
-                  className="btn-primary bg-white text-[#1a2e35] px-8 py-4 rounded-full font-semibold text-lg inline-flex items-center justify-center gap-2"
+                  className="btn-primary bg-white text-[#1B4F72] px-8 py-4 rounded-full font-semibold text-lg inline-flex items-center justify-center gap-2"
                 >
                   Get a Free Quote
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -79,7 +79,7 @@ export default function Home() {
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#1a2e35]">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#1B4F72]">
               Body shops want thousands.<br />
               <span className="text-gray-400">And your car for a week.</span>
             </h2>
@@ -123,7 +123,7 @@ export default function Home() {
                   <div className="w-16 h-16 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center mx-auto">
                     {item.icon}
                   </div>
-                  <h3 className="mt-6 text-xl font-semibold text-[#1a2e35]">{item.title}</h3>
+                  <h3 className="mt-6 text-xl font-semibold text-[#1B4F72]">{item.title}</h3>
                   <p className="mt-3 text-gray-600">{item.description}</p>
                 </div>
               </ScrollAnimation>
@@ -144,17 +144,17 @@ export default function Home() {
 
             <ScrollAnimation animation="fade-in-right">
               <div>
-                <p className="text-[#2d4a54] font-semibold uppercase tracking-wide text-sm">Meet Your Technician</p>
-                <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-[#1a2e35]">
+                <p className="text-[#2A6496] font-semibold uppercase tracking-wide text-sm">Meet Your Technician</p>
+                <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-[#1B4F72]">
                   Jason Bahr
                 </h2>
                 <p className="mt-6 text-lg text-gray-600 leading-relaxed">
                   Jason has removed thousands of dents across the Treasure Valley. From door dings to major damage, he&apos;s seen it all - and fixed it without touching your factory paint.
                 </p>
-                <blockquote className="mt-8 border-l-4 border-[#2d4a54] pl-6 italic text-gray-600">
+                <blockquote className="mt-8 border-l-4 border-[#2A6496] pl-6 italic text-gray-600">
                   &ldquo;At Car Studios, you can count on honest and straightforward service from highly skilled technicians. Your car will get some love with us!&rdquo;
                 </blockquote>
-                <p className="mt-4 font-semibold text-[#1a2e35]">- Jason Bahr, Owner</p>
+                <p className="mt-4 font-semibold text-[#1B4F72]">- Jason Bahr, Owner</p>
               </div>
             </ScrollAnimation>
           </div>
@@ -165,7 +165,7 @@ export default function Home() {
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation className="text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#1a2e35]">How It Works</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#1B4F72]">How It Works</h2>
             <p className="mt-4 text-lg text-gray-600">Three simple steps to a dent-free vehicle</p>
           </ScrollAnimation>
 
@@ -190,10 +190,10 @@ export default function Home() {
               <ScrollAnimation key={i} delay={i * 150}>
                 <div className="relative">
                   <div className="card-hover bg-white border border-gray-100 rounded-2xl p-8 text-center shadow-sm">
-                    <div className="w-14 h-14 bg-[#1a2e35] text-white rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
+                    <div className="w-14 h-14 bg-[#1B4F72] text-white rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
                       {item.step}
                     </div>
-                    <h3 className="mt-6 text-xl font-semibold text-[#1a2e35]">{item.title}</h3>
+                    <h3 className="mt-6 text-xl font-semibold text-[#1B4F72]">{item.title}</h3>
                     <p className="mt-3 text-gray-600">{item.description}</p>
                   </div>
                   {i < 2 && (
@@ -211,7 +211,7 @@ export default function Home() {
       </section>
 
       {/* What We Fix */}
-      <section className="py-24 bg-[#1a2e35] text-white">
+      <section className="py-24 bg-[#1B4F72] text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation className="text-center">
             <h2 className="text-3xl sm:text-4xl font-bold">What We Fix</h2>
@@ -238,18 +238,64 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Service Area */}
+      {/* Success/Transformation - Before & After */}
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation className="text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#1a2e35]">Service Area</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#1B4F72]">See the Difference</h2>
+            <p className="mt-4 text-lg text-gray-600">Real results from real customers in the Treasure Valley</p>
+          </ScrollAnimation>
+
+          <div className="mt-16 grid md:grid-cols-2 gap-8 items-center">
+            <ScrollAnimation animation="fade-in-left">
+              <div className="relative">
+                <div className="absolute -top-4 -left-4 bg-red-500 text-white px-4 py-2 rounded-full text-sm font-semibold z-10">
+                  Before
+                </div>
+                <img
+                  src="/trd-before.jpeg"
+                  alt="Dent damage before PDR repair"
+                  className="rounded-2xl shadow-lg w-full"
+                />
+                <p className="mt-4 text-gray-500 text-sm text-center">Major crease damage on Toyota TRD</p>
+              </div>
+            </ScrollAnimation>
+
+            <ScrollAnimation animation="fade-in-right">
+              <div className="relative">
+                <div className="absolute -top-4 -left-4 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold z-10">
+                  After
+                </div>
+                <img
+                  src="/trd-after.jpeg"
+                  alt="Same panel after PDR repair - dent removed"
+                  className="rounded-2xl shadow-lg w-full"
+                />
+                <p className="mt-4 text-gray-500 text-sm text-center">Same panel after PDR - factory paint preserved</p>
+              </div>
+            </ScrollAnimation>
+          </div>
+
+          <ScrollAnimation className="mt-12 text-center">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              No body filler. No repainting. No color matching issues. Just your original factory finish - like the dent never happened.
+            </p>
+          </ScrollAnimation>
+        </div>
+      </section>
+
+      {/* Service Area */}
+      <section className="py-24 bg-[#f8f8f6]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollAnimation className="text-center">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#1B4F72]">Service Area</h2>
             <p className="mt-4 text-lg text-gray-600">Proudly serving the Treasure Valley</p>
           </ScrollAnimation>
 
           <div className="mt-12 flex flex-wrap justify-center gap-4">
             {serviceAreas.map((area, i) => (
               <ScrollAnimation key={area} delay={i * 75}>
-                <div className="card-hover bg-[#f8f8f6] px-8 py-4 rounded-full text-[#1a2e35] font-medium border border-gray-200">
+                <div className="card-hover bg-white px-8 py-4 rounded-full text-[#1B4F72] font-medium border border-gray-200 shadow-sm">
                   {area}
                 </div>
               </ScrollAnimation>
@@ -265,7 +311,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section id="book" className="py-24 bg-gradient-to-br from-[#1a2e35] via-[#2d4a54] to-[#1a2e35]">
+      <section id="book" className="py-24 bg-gradient-to-br from-[#1B4F72] via-[#2A6496] to-[#1B4F72]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollAnimation>
             <h2 className="text-3xl sm:text-4xl font-bold text-white">

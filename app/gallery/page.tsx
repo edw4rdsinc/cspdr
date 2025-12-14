@@ -20,7 +20,7 @@ export default function Gallery() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-gradient-to-br from-[#1a2e35] via-[#2d4a54] to-[#1a2e35]">
+      <section className="pt-32 pb-16 bg-gradient-to-br from-[#1B4F72] via-[#2A6496] to-[#1B4F72]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl sm:text-5xl font-bold text-white">Our Work</h1>
           <p className="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
@@ -47,7 +47,7 @@ export default function Gallery() {
                   </div>
 
                   {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-[#1a2e35]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-[#1B4F72]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <div className="text-center text-white p-4">
                       <p className="font-semibold">{image.alt}</p>
                       <p className="text-sm text-gray-300 mt-1">Paintless Dent Repair</p>
@@ -61,13 +61,13 @@ export default function Gallery() {
           {/* Note about before/after */}
           <ScrollAnimation className="mt-16 text-center">
             <div className="bg-[#f8f8f6] rounded-2xl p-8 max-w-2xl mx-auto">
-              <h3 className="text-xl font-semibold text-[#1a2e35]">Before & After Photos</h3>
+              <h3 className="text-xl font-semibold text-[#1B4F72]">Before & After Photos</h3>
               <p className="mt-3 text-gray-600">
                 Every dent tells a story. Send us a photo of yours and we&apos;ll show you what&apos;s possible.
               </p>
               <a
                 href="/#book"
-                className="btn-primary inline-block mt-6 bg-[#1a2e35] text-white px-8 py-3 rounded-full font-medium"
+                className="btn-primary inline-block mt-6 bg-[#1B4F72] text-white px-8 py-3 rounded-full font-medium"
               >
                 Get Your Free Quote
               </a>

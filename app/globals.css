@@ -3,10 +3,10 @@
 :root {
   --background: #f8f8f6;
   --foreground: #1a1a1a;
-  --brand-dark: #1a2e35;
-  --brand-accent: #2d4a54;
+  --brand-dark: #1B4F72;
+  --brand-accent: #2A6496;
+  --brand-sky: #4FC3E8;
   --brand-light: #f8f8f6;
-  --brand-teal: #3d5a62;
 }
 
 @theme inline {
@@ -14,8 +14,8 @@
   --color-foreground: var(--foreground);
   --color-brand-dark: var(--brand-dark);
   --color-brand-accent: var(--brand-accent);
+  --color-brand-sky: var(--brand-sky);
   --color-brand-light: var(--brand-light);
-  --color-brand-teal: var(--brand-teal);
   --font-sans: var(--font-geist-sans);
 }
 
@@ -215,7 +215,7 @@ body {
 
 /* Text gradient */
 .text-gradient {
-  background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand-teal) 100%);
+  background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand-sky) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

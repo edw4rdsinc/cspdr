@@ -25,17 +25,13 @@ export default function Navigation() {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Logo placeholder */}
+          {/* Logo */}
           <Link href="/" className="flex items-center group">
-            <div
-              className={`w-44 h-12 rounded-lg flex items-center justify-center text-sm font-medium transition-all duration-300 ${
-                scrolled
-                  ? "bg-[#1a2e35] text-white"
-                  : "bg-white/90 text-[#1a2e35]"
-              }`}
-            >
-              [LOGO]
-            </div>
+            <img
+              src="/logo.png"
+              alt="Car Studios"
+              className="h-12 w-auto"
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -45,12 +41,13 @@ export default function Navigation() {
               { href: "/gallery", label: "Gallery" },
               { href: "/rocklear", label: "Rocklear" },
               { href: "/resources", label: "Resources" },
+              { href: "/blog", label: "Blog" },
             ].map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={`relative font-medium transition-colors duration-300 ${
-                  scrolled ? "text-gray-700 hover:text-[#1a2e35]" : "text-white hover:text-white/80"
+                  scrolled ? "text-gray-700 hover:text-[#1B4F72]" : "text-white hover:text-white/80"
                 } after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full`}
               >
                 {link.label}
@@ -60,8 +57,8 @@ export default function Navigation() {
               href="#book"
               className={`btn-primary px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${
                 scrolled
-                  ? "bg-[#1a2e35] text-white"
-                  : "bg-white text-[#1a2e35]"
+                  ? "bg-[#1B4F72] text-white"
+                  : "bg-white text-[#1B4F72]"
               }`}
             >
               Get Free Quote
@@ -98,11 +95,12 @@ export default function Navigation() {
               { href: "/gallery", label: "Gallery" },
               { href: "/rocklear", label: "Rocklear" },
               { href: "/resources", label: "Resources" },
+              { href: "/blog", label: "Blog" },
             ].map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block py-2 text-gray-700 hover:text-[#1a2e35] font-medium transition-colors"
+                className="block py-2 text-gray-700 hover:text-[#1B4F72] font-medium transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
@@ -110,7 +108,7 @@ export default function Navigation() {
             ))}
             <a
               href="#book"
-              className="block w-full bg-[#1a2e35] text-white px-5 py-3 rounded-full text-center font-medium hover:bg-[#2d4a54] transition-colors mt-4"
+              className="block w-full bg-[#1B4F72] text-white px-5 py-3 rounded-full text-center font-medium hover:bg-[#2A6496] transition-colors mt-4"
               onClick={() => setIsOpen(false)}
             >
               Get Free Quote
