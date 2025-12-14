@@ -7,9 +7,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="w-44 h-12 bg-white/10 rounded-lg flex items-center justify-center text-sm mb-4">
-              [LOGO]
-            </div>
+            <img src="/logo.png" alt="Car Studios" className="h-12 w-auto mb-4" />
             <p className="text-gray-300 max-w-md leading-relaxed">
               Mobile paintless dent repair serving the Treasure Valley. We come to you - home, work, wherever. Original paint stays intact.
             </p>
@@ -44,6 +42,7 @@ export default function Footer() {
                 { href: "/gallery", label: "Gallery" },
                 { href: "/rocklear", label: "Rocklear" },
                 { href: "/resources", label: "Resources" },
+                { href: "/blog", label: "Blog" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link
