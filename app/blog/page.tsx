@@ -39,7 +39,7 @@ export default async function BlogPage() {
               {whitepapers.map((wp: Whitepaper) => (
                 <a
                   key={wp._id}
-                  href={`https://dentadvisor.org/whitepapers/${wp.slug.current}`}
+                  href={`https://dentadvisor.org/guides/${wp.slug.current}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow block group"
