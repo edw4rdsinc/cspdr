@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getWhitepaper, getWhitepapers, urlFor } from '@/lib/sanity'
+import { getWhitepaper, getWhitepapers, getBlogsByWhitepaper } from '@/lib/sanity'
 import PortableText from '@/components/PortableText'
 
 export const revalidate = 3600
@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: guide.title,
       description: guide.description || undefined,
       type: 'article',
-      images: guide.mainImage ? [urlFor(guide.mainImage).width(1200).height(630).url()] : [],
+      authors: [guide.author],
+      publishedTime: guide.publishedAt,
     },
   }
 }
@@ -44,7 +45,10 @@ export async function generateStaticParams() {
 
 export default async function GuidePage({ params }: Props) {
   const { slug } = await params
-  const guide = await getWhitepaper(slug)
+  const [guide, relatedBlogs] = await Promise.all([
+    getWhitepaper(slug),
+    getBlogsByWhitepaper(slug),
+  ])
 
   if (!guide) {
     notFound()
@@ -52,6 +56,62 @@ export default async function GuidePage({ params }: Props) {
 
   return (
     <>
+      {/* Structured Data - ScholarlyArticle for Guides */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ScholarlyArticle",
+            "headline": guide.title,
+            "description": guide.description,
+            "abstract": guide.summary,
+            "author": {
+              "@type": "Organization",
+              "name": guide.author,
+              "url": "https://dentadvisor.org"
+            },
+            "datePublished": guide.publishedAt,
+            "publisher": {
+              "@type": "Organization",
+              "name": "DentAdvisor",
+              "url": "https://dentadvisor.org"
+            },
+            "url": `https://dentadvisor.org/guides/${guide.slug.current}`,
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": `https://dentadvisor.org/guides/${guide.slug.current}`
+            },
+            "isAccessibleForFree": true,
+            "inLanguage": "en-US",
+            ...(guide.sources && guide.sources.length > 0 && {
+              "citation": guide.sources.map(s => ({
+                "@type": "CreativeWork",
+                "name": s.name,
+                "description": s.description,
+                "url": s.url
+              }))
+            })
+          })
+        }}
+      />
+
+      {/* Breadcrumb Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://carstudiospdr.com" },
+              { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://carstudiospdr.com/blog" },
+              { "@type": "ListItem", "position": 3, "name": guide.title, "item": `https://carstudiospdr.com/guides/${guide.slug.current}` }
+            ]
+          })
+        }}
+      />
+
       {/* Hero */}
       <section className="pt-32 pb-12 bg-gradient-to-br from-[#1B4F72] via-[#2A6496] to-[#1B4F72]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -73,69 +133,143 @@ export default async function GuidePage({ params }: Props) {
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
             {guide.title}
           </h1>
-          {guide.description && (
-            <p className="mt-4 text-xl text-white/80 max-w-2xl">
-              {guide.description}
-            </p>
-          )}
-        </div>
-      </section>
+          <p className="mt-4 text-xl text-white/80 max-w-2xl">
+            {guide.description}
+          </p>
+          <div className="flex items-center gap-4 mt-6 text-sm text-white/70">
+            <span>By {guide.author}</span>
+            <span>&bull;</span>
+            <time>
+              {new Date(guide.publishedAt).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </time>
+          </div>
 
-      {/* Featured Image */}
-      {guide.mainImage && (
-        <div className="relative -mt-6 mb-8">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <img
-              src={urlFor(guide.mainImage).width(1200).height(600).url()}
-              alt={guide.title}
-              className="w-full rounded-2xl shadow-lg"
-            />
+          {/* Trust Badges */}
+          <div className="flex flex-wrap items-center gap-3 mt-6 pt-6 border-t border-white/10">
+            <div className="flex items-center gap-2 bg-green-500/20 text-green-300 px-3 py-1.5 rounded-full text-xs font-medium">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              Research-Backed
+            </div>
+            {guide.sources && guide.sources.length > 0 && (
+              <div className="flex items-center gap-2 bg-blue-500/20 text-blue-300 px-3 py-1.5 rounded-full text-xs font-medium">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
+                </svg>
+                {guide.sources.length} Citations
+              </div>
+            )}
           </div>
         </div>
-      )}
+      </section>
 
       {/* Content */}
       <article className="py-12 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          {guide.content ? (
-            <PortableText content={guide.content} />
-          ) : (
-            <p className="text-gray-500 italic">Content coming soon...</p>
-          )}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-3 gap-12">
+            {/* Main Content */}
+            <div className="lg:col-span-2">
+              {guide.summary && (
+                <div className="bg-[#f8f8f6] border border-gray-200 rounded-lg p-6 mb-8">
+                  <h2 className="text-lg font-semibold text-[#1B4F72] mb-2">Executive Summary</h2>
+                  <p className="text-gray-700">{guide.summary}</p>
+                </div>
+              )}
+
+              {guide.content ? (
+                <PortableText value={guide.content} />
+              ) : (
+                <p className="text-gray-500 italic">Content coming soon...</p>
+              )}
+
+              {/* Sources */}
+              {guide.sources && guide.sources.length > 0 && (
+                <div className="mt-12 pt-8 border-t border-gray-200">
+                  <h2 className="text-xl font-semibold text-[#1B4F72] mb-4">Sources</h2>
+                  <ol className="space-y-3 text-sm text-gray-600">
+                    {guide.sources.map((source, index) => (
+                      <li key={source._key} className="flex gap-2">
+                        <span className="font-medium text-gray-500">{index + 1}.</span>
+                        <div>
+                          <span className="font-medium text-gray-800">{source.name}</span>
+                          {source.description && <span>, &ldquo;{source.description}&rdquo;</span>}
+                          {source.url && (
+                            <a
+                              href={source.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="block text-[#1B4F72] hover:underline truncate"
+                            >
+                              {source.url}
+                            </a>
+                          )}
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              )}
+            </div>
+
+            {/* Sidebar */}
+            <aside className="lg:col-span-1">
+              {/* Related Articles */}
+              {relatedBlogs.length > 0 && (
+                <div className="sticky top-24">
+                  <h3 className="text-lg font-semibold text-[#1B4F72] mb-4">Related Articles</h3>
+                  <div className="space-y-4">
+                    {relatedBlogs.slice(0, 5).map((blog) => (
+                      <Link key={blog._id} href={`/blog/${blog.slug.current}`} className="block group">
+                        <h4 className="text-gray-800 font-medium group-hover:text-[#1B4F72] transition-colors line-clamp-2">
+                          {blog.title}
+                        </h4>
+                        <p className="text-sm text-gray-500 mt-1">
+                          {new Date(blog.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                        </p>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* CTA */}
+              <div className="mt-8 bg-[#1B4F72] text-white rounded-lg p-6">
+                <h3 className="font-semibold mb-2">Need PDR Service?</h3>
+                <p className="text-sm text-gray-300 mb-4">
+                  Mobile paintless dent repair in the Treasure Valley.
+                </p>
+                <a
+                  href="/#book"
+                  className="block w-full bg-white text-[#1B4F72] text-center py-3 rounded-full font-medium hover:bg-gray-100 transition-colors"
+                >
+                  Get Free Quote
+                </a>
+              </div>
+            </aside>
+          </div>
         </div>
       </article>
 
-      {/* CTA */}
-      <section className="py-16 bg-[#f8f8f6]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#1B4F72]">
-            Ready to Get Your Dent Fixed?
-          </h2>
-          <p className="mt-4 text-gray-600">
-            Mobile PDR service across the Treasure Valley. We come to you - home, work, wherever is convenient.
-          </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/#book"
-              className="bg-[#1B4F72] text-white px-8 py-4 rounded-full font-semibold inline-flex items-center justify-center gap-2 hover:bg-[#2A6496] transition-colors"
-            >
-              Get a Free Quote
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-            <a
-              href="tel:2086482554"
-              className="border-2 border-[#1B4F72] text-[#1B4F72] px-8 py-4 rounded-full font-semibold inline-flex items-center justify-center gap-2 hover:bg-[#1B4F72] hover:text-white transition-colors"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              (208) 648-2554
-            </a>
+      {/* Tags */}
+      {guide.tags && guide.tags.length > 0 && (
+        <section className="bg-[#f8f8f6] py-8">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-wrap gap-2">
+              <span className="text-sm text-gray-600">Tags:</span>
+              {guide.tags.map((tag) => (
+                <span key={tag} className="text-sm text-gray-600 bg-white px-3 py-1 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </>
   )
 }

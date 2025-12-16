@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getBlogs, getWhitepapers, urlFor, Blog, Whitepaper } from '@/lib/sanity'
+import { getBlogs, getWhitepapers, Blog, Whitepaper } from '@/lib/sanity'
 
 export const revalidate = 3600 // Revalidate every hour
 
@@ -84,22 +84,11 @@ export default async function BlogPage() {
                   href={`/blog/${blog.slug.current}`}
                   className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow block"
                 >
-                  {blog.mainImage && (
-                    <div className="aspect-video bg-gray-100 overflow-hidden">
-                      <img
-                        src={urlFor(blog.mainImage).width(600).height(340).url()}
-                        alt={blog.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                  )}
-                  {!blog.mainImage && (
-                    <div className="aspect-video bg-gradient-to-br from-[#1B4F72] to-[#2A6496] flex items-center justify-center">
-                      <svg className="w-12 h-12 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                      </svg>
-                    </div>
-                  )}
+                  <div className="aspect-video bg-gradient-to-br from-[#1B4F72] to-[#2A6496] flex items-center justify-center">
+                    <svg className="w-12 h-12 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                    </svg>
+                  </div>
                   <div className="p-6">
                     <time className="text-sm text-gray-400">
                       {new Date(blog.publishedAt).toLocaleDateString('en-US', {
